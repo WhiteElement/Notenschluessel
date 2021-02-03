@@ -1,6 +1,3 @@
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.icu.text.UnicodeSet;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -17,25 +14,36 @@ public class Notenschluessel {
         this.gradeWithHalfPoints = gradeWithHalfPoints;
 
         createGrades();
-        createExactPoints(maxPoints, gradeWithHalfPoints);
+        calcExactPoints(maxPoints, gradeWithHalfPoints);
+        matchExactPoints(maxPoints, gradeWithHalfPoints);
+    }
+
+    private void calcExactPoints(double maxPoints, double gradeWithHalfPoints) {
+        if(Double.compare(gradeWithHalfPoints, 3.5) == 0) {
+            //ohne knick
+
+            double step = calcStep(maxPoints);
+            
+        }
+    }
+
+    public double calcStep(double maxPoint) {
+        return maxPoints / 50; // Anzahl der Noten -1
     }
 
     private void createGrades() {
-        LinkedList<String> tempGrades = null;
+        LinkedList<String> grades = null;
         for(int i=1; i<6; i++) {
             for(int dec=0; dec < 10; dec++) {
-                tempGrades.add(i+"."+dec);
+                grades.add(i+"."+dec);
             }
         }
-        tempGrades.add("6.0");
+        grades.add("6.0");
 
-        for(int i=0; i < tempGrades.size(); i ++) {
-            grades[i] = Double.parseDouble(tempGrades.get(i));
-        }
-        ArrayUtils.reverse(double[] grades)
+        Collections.reverse(grades);
     }
 
-    private void createExactPoints(double maxPoints, double gradeWithHalfPoints) {
+    private void matchExactPoints(double maxPoints, double gradeWithHalfPoints) {
         ExactPoints = new HashMap<Double, Double>();
 
         for(double grade : grades) {
