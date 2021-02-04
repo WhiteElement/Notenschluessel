@@ -16,12 +16,18 @@ public class NotenschluesselTest {
     }
 
     @Test
-    public void step_should_be_0_8() {
+    public void first_exact_point_is_0_8() {
         Notenschluessel schluessel = new Notenschluessel(40.0, 3.5);
-        schluessel.calcStep(schluessel.getMaxPoints(), getGradeWithHalfPoints());
+        double point = schluessel.getExactPoints(1.1);
+
+        Assert.assertTrue(Double.compare(point, 0.8) == 0);
     }
 
-    private double getGradeWithHalfPoints() {
-        return this.getGradeWithHalfPoints();
+    @Test
+    public void step_should_be_0_8() {
+        Notenschluessel schluessel = new Notenschluessel(40.0, 3.5);
+        double step = schluessel.calcStep(schluessel.getMaxPoints());
+
+        Assert.assertTrue(Double.compare(step, 0.8) == 0);
     }
 }
