@@ -8,4 +8,4 @@ Scales can vary widely depending on the amount of points one can achieve in a te
 ## Screenshots
 ![Alt text](notenschluessel-creator-output.png?raw=true "Output Notenschlüssel")
 
-![ScreenShot](https://raw.github.com/WhiteElement/Notenschluessel/master/notenschluessel-creator-output.png)
+![ScreenShot](https://raw.github.com/WhiteElement/blob/Notenschluessel/master/notenschluessel-creator-output.png)
