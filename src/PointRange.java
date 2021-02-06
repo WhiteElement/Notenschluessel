@@ -1,6 +1,11 @@
 
 import java.util.LinkedList;
 
+    enum StepsFor {
+        ALL,
+        TOONE,
+        TOSIX
+    }
 
 public class PointRange {
     private final LinkedList<Double> grades;
@@ -53,7 +58,7 @@ public class PointRange {
         if(Double.compare(gradeWithHalfPoints, 3.5) == 0) {
             //ohne knick
 
-            double step = calcStep(maxPoints);
+            double step = calcStep(maxPoints, StepsFor.ALL);
             double point = 0;
 
             for(int i=0; i<grades.size(); i++) {
@@ -62,10 +67,41 @@ public class PointRange {
             }
 
         }
+        else if (Double.compare(gradeWithHalfPoints, 4.0) == 0) {
+            double steptoOne = calcStep(maxPoints, StepsFor.TOONE);
+            double stepToSix = calcStep(maxPoints, StepsFor.TOSIX);
+
+            double point = 0;
+            for(int i=0; i<20; i++) {
+                exactPoints.add(point);
+                point+=stepToSix;
+            }
+            point = maxPoints / 2;
+            for(int i=0; i<31; i++) {
+                if(i == 30) {
+                    exactPoints.add(maxPoints);
+                    break;
+                }
+                exactPoints.add(point);
+                point+=steptoOne;
+            }
+        }
+        else
+            System.out.println("keine gültige Note für halbe Punktezahl angegeben");
     }
 
-    public double calcStep(double maxPoints) {
-        return maxPoints / 50; // num of grades -1
+    public double calcStep(double maxPoints, StepsFor direction) {
+        if(direction == StepsFor.ALL)
+           return maxPoints / 50; // num of grades -1
+        if(direction == StepsFor.TOONE) {
+            final int numOfSteps = 30;
+            return maxPoints / 2 / numOfSteps;
+        }
+        if(direction == StepsFor.TOSIX) {
+            final int numOfSteps = 20;
+            return maxPoints / 2 / numOfSteps;
+        }
+        return -1;
     }
 
 

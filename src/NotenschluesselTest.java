@@ -23,13 +23,13 @@ public class NotenschluesselTest extends DoubleFormatter {
         Assert.assertTrue(Double.compare(point, 0.8) == 0);
     }
 
-    @Test
-    public void step_should_be_0_8() {
-        Notenschluessel schluessel = new Notenschluessel(40.0, 3.5);
-        double step = schluessel.getPointRange().calcStep(schluessel.getMaxPoints());
-
-        Assert.assertTrue(Double.compare(step, 0.8) == 0);
-    }
+//    @Test
+//    public void step_should_be_0_8() {
+//        Notenschluessel schluessel = new Notenschluessel(40.0, 3.5);
+//        double step = schluessel.getPointRange().calcStep(schluessel.getMaxPoints());
+//
+//        Assert.assertTrue(Double.compare(step, 0.8) == 0);
+//    }
 
     @Test
     public void should_round_up() {

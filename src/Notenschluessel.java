@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.time.Period;
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,15 +22,17 @@ public class Notenschluessel {
 
     }
 
-    public static void main(String[] args) {
-        Notenschluessel ns = new Notenschluessel(40, 3.5);
-        for(int i =0; i< ns.getGrades().size(); i++) {
-            System.out.println("grade: " + ns.getGrades().get(i) +
-                    ", low: " + ns.getPointRange().getLowPoints().get(i) +
-                    ",  high: " + ns.getPointRange().getHighPoints().get(i) +
-                    ", exact: " + ns.getPointRange().getExactPoints().get(i));
-        }
-}
+    public static void main(String[] args) throws IOException {
+        double maxPoints = 40.0;
+        double gradeWithHalfPoints = 4.0;
+        Notenschluessel ns = new Notenschluessel(maxPoints, gradeWithHalfPoints);
+        PDFWriter writer = new PDFWriter(gradeWithHalfPoints,
+                ns.grades,
+                ns.getPointRange().getLowPoints(),
+                ns.getPointRange().getHighPoints());
+        writer.save();
+    }
+
 
     public double calcStep(double maxPoint) {
         return maxPoints / 50; // Anzahl der Noten -1
