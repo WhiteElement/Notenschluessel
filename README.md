@@ -1,9 +1,9 @@
-# Notenschlüssel Creator 
-Version 2.0
+# Notenschlüssel Creator [outdated]
 
-## Description
-Notenschlüssel Creator fully automates the creation of a grading scale and exports it in .pdf.
-Scales can vary widely depending on the amount of points one can achieve in a test combined with the fact that scale depends on the secondary school type. Notenschlüssel creator creates a scale with only these two inputs an easy to use PDF Document, mathematically sound, making grading tests easy.
+Ein kleines Script, welches Notenskalen für Lehrer erstellt. Jeder Test, jede Arbeit hat unterschiedlich viele Punkte und jede weiterführende Schule verlangt eine andere Gewichtung. So ist es notwendig, dass Notenskalen dynmisch generiert werden müssen. Statt diese Skalen mühsam per Hand oder programmatorisch in Excel zu basteln, erledigt dieses Script es anhand ein paar einfacher Inputs. Die fertige Notenskala wird dann als PDF exportiert.
+
+## verwedente Technologien
+- pdfbox
 
 ## Screenshots
 <img src="img/output.jpg" width=auto>
